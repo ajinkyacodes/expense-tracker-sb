@@ -53,4 +53,12 @@ public class CategoryServiceImpl implements CategoryService {
         Category updateCategory = categoryRepository.save(category); // performs update operation
         return CategoryMapper.mapToCategoryDto(updateCategory);
     }
+
+    @Override
+    public void deleteCategory(Long categoryId) {
+        // Check if a category with given id exists in a database
+        Category category = categoryRepository.findById(categoryId).orElseThrow(()-> new RuntimeException("Category not found with id: "+ categoryId));
+
+        categoryRepository.delete(category);
+    }
 }
