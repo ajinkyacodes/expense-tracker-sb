@@ -30,10 +30,12 @@ Performed exception handling for different conditions.
 
 ## REST API Documentation
 
+Swagger UI URL: http://localhost:8080/swagger-ui/index.html
+
 - Added dependency called springdoc-openapi
 - It's a Java Library that provides integration between spring-boot and swagger-ui
-- Generates documentation in JSON/YAML and HTML format APIs 
+- It generates documentation in JSON/YAML and HTML format APIs 
 - Added @OpenAPIDefinition annotation in Java Main File
-- Customized Swagger API Documentation with annotations like @Tag, @Operation, and @ApiResponse for each API Controller Method
-- Customized Swagger Models Documentation with annotations like @Schema for ErrorDetails, CategoryDto, and ExpenseDTo
+- Added annotations like @Tag, @Operation, and @ApiResponse in API Controller
+- Added annotations like @Schema for ErrorDetails, CategoryDto, and ExpenseDTo
 
