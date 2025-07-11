@@ -5,10 +5,7 @@ import com.ajinkyacodes.expense_tracker.service.ExpenseService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
@@ -23,5 +20,12 @@ public class ExpenseController {
     public ResponseEntity<ExpenseDto> createExpense(@RequestBody ExpenseDto expenseDto){
         ExpenseDto savedExpense = expenseService.createExpense(expenseDto);
         return new ResponseEntity<>(savedExpense, HttpStatus.CREATED);
+    }
+
+    // Build get expense by id REST API
+    @GetMapping("{id}")
+    public ResponseEntity<ExpenseDto> getExpenseById(@PathVariable("id") Long expenseId){
+        ExpenseDto expense = expenseService.getExpenseById(expenseId);
+        return ResponseEntity.ok(expense);
     }
 }
