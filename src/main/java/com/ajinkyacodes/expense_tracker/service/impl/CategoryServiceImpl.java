@@ -2,6 +2,7 @@ package com.ajinkyacodes.expense_tracker.service.impl;
 
 import com.ajinkyacodes.expense_tracker.dto.CategoryDto;
 import com.ajinkyacodes.expense_tracker.entity.Category;
+import com.ajinkyacodes.expense_tracker.exceptions.ResourceNotFoundException;
 import com.ajinkyacodes.expense_tracker.mapper.CategoryMapper;
 import com.ajinkyacodes.expense_tracker.repository.CategoryRepository;
 import com.ajinkyacodes.expense_tracker.service.CategoryService;
@@ -32,7 +33,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDto getCategoryById(Long categoryId) {
-        Category category = categoryRepository.findById(categoryId).orElseThrow(()-> new RuntimeException("Category not found with id: "+categoryId));
+        Category category = categoryRepository.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Category not found with id: "+categoryId));
         return CategoryMapper.mapToCategoryDto(category);
     }
 
@@ -45,7 +46,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDto updateCategory(Long categoryId, CategoryDto categoryDto) {
         // get category entity from the database bt category id
-        Category category = categoryRepository.findById(categoryId).orElseThrow(()-> new RuntimeException("Category not found with id: "+ categoryId));
+        Category category = categoryRepository.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Category not found with id: "+ categoryId));
 
         // Update category entity object and save to database table
         category.setName(categoryDto.name());
@@ -57,7 +58,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void deleteCategory(Long categoryId) {
         // Check if a category with given id exists in a database
-        Category category = categoryRepository.findById(categoryId).orElseThrow(()-> new RuntimeException("Category not found with id: "+ categoryId));
+        Category category = categoryRepository.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Category not found with id: "+ categoryId));
 
         categoryRepository.delete(category);
     }
