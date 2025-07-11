@@ -11,3 +11,13 @@ Build CRUD REST APIs
 - Update Category
 - Delete Category
 
+# Expense Management
+
+Build CRUD REST APIs
+
+- Create Expense
+- Get Expense
+- Get All Expenses
+- Update Expense
+- Delete Expense
+
