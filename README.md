@@ -11,7 +11,7 @@ Build CRUD REST APIs
 - Update Category
 - Delete Category
 
-# Expense Management
+## Expense Management
 
 Build CRUD REST APIs
 
@@ -20,4 +20,11 @@ Build CRUD REST APIs
 - Get All Expenses
 - Update Expense
 - Delete Expense
+
+## Exception Handling
+
+Performed exception handling for different conditions.
+
+- RESOURCE_NOT_FOUND
+- INTERNAL_SERVER_ERROR
 
