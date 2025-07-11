@@ -72,4 +72,11 @@ public class ExpenseServiceImpl implements ExpenseService {
         // convert expense entity to expenseDto
         return ExpenseMapper.mapToExpenseDto(updatedExpense);
     }
+
+    @Override
+    public void deleteExpense(Long expenseId) {
+        // get expense from database by expense id. If it does not exist then throw runtime exception
+        Expense expense = expenseRepository.findById(expenseId).orElseThrow(()-> new RuntimeException("Expense not found with id:"+ expenseId));
+        expenseRepository.delete(expense);
+    }
 }
